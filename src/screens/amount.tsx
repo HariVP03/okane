@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { View, Text, Input, Button } from "native-base";
 import React, { useState } from "react";
 import { Linking } from "react-native";
@@ -5,10 +6,14 @@ import { parseUpiString } from "../helpers/upi-string";
 
 export function AmountScreen({ route: { params } }: any) {
   const [amount, setAmount] = useState("");
+  const nav = useNavigation();
 
   const onSubmit = () => {
     const upi = parseUpiString(params.data, parseInt(amount));
-    Linking.openURL(upi);
+    Linking.openURL(upi).then((res) => {
+      console.log({ res });
+      nav.navigate("Success");
+    });
   };
 
   return (

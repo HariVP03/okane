@@ -1,14 +1,11 @@
 import { View, Text, Button } from "native-base";
 import React, { useEffect, useState } from "react";
-import { BarCodeScanner } from "expo-barcode-scanner";
 import { useNavigation } from "@react-navigation/core";
 import { Camera } from "expo-camera";
 import { Dimensions } from "react-native";
 
 export function ScanScreen() {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-  const [scanned, setScanned] = useState<boolean>(false);
-  const [data, setData] = useState<any>();
   const nav = useNavigation();
 
   useEffect(() => {
@@ -61,11 +58,9 @@ export function ScanScreen() {
     );
   }
 
-  console.log({ hasPermission, scanned });
-
   return (
     <View flex={1}>
-      {hasPermission && !scanned && (
+      {hasPermission && (
         <Camera
           style={{
             flex: 1,
@@ -75,7 +70,6 @@ export function ScanScreen() {
           onBarCodeScanned={handleQRScanned}
         />
       )}
-      <Text>{data}</Text>
     </View>
   );
 }
