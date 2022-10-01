@@ -8,6 +8,7 @@ import { HomeScreen } from "./src/screens";
 import { PayScreen } from "./src/screens/pay";
 import { ScanScreen } from "./src/screens/scan";
 import { AmountScreen } from "./src/screens/amount";
+import { AccountScreen } from "./src/screens/account";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +47,14 @@ function Routes() {
         }}
         name="Pay"
         component={PayScreen}
+      />
+
+      <Stack.Screen
+        options={{
+          ...commonOptions,
+        }}
+        name="Account"
+        component={AccountScreen}
       />
     </Stack.Navigator>
   );

@@ -10,6 +10,7 @@ export function PayScreen({ route: { params } }: any) {
   useEffect(() => {
     handlePay();
   }, []);
+
   return (
     <View>
       <Text

@@ -56,7 +56,7 @@ export const HomeScreen = () => {
           <Ionicons name="scan" size={24} color="black" />
         </ButtonWithText>
 
-        <ButtonWithText onPress={() => nav.navigate("Amount")} text="Account">
+        <ButtonWithText onPress={() => nav.navigate("Account")} text="Account">
           <MaterialCommunityIcons
             name="piggy-bank-outline"
             size={24}
