@@ -23,7 +23,19 @@ export function ScanScreen() {
   };
 
   if (hasPermission === null) {
-    return <Text>Requesting for camera permission</Text>;
+    return (
+      <View
+        display="flex"
+        h="full"
+        w="full"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Text fontSize="lg" textAlign="center" mb={8} mx={4}>
+          Requesting permission to use your camera...📸
+        </Text>
+      </View>
+    );
   }
   if (hasPermission === false) {
     return (
