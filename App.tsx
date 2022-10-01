@@ -12,8 +12,18 @@ function Routes() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Scan" component={ScanScreen} />
-      <Stack.Screen name="Amount" component={AmountScreen} />
+      <Stack.Screen
+        name="Scan"
+        component={ScanScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Amount"
+        options={{
+          headerBackVisible: false,
+        }}
+        component={AmountScreen}
+      />
       <Stack.Screen name="Pay" component={PayScreen} />
     </Stack.Navigator>
   );

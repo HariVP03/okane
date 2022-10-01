@@ -1,3 +1,3 @@
 export function addAmountToUPI(upi: string, amount: number) {
-  return `${upi}&am=${amount.toString()}`;
+  return `${upi.replace("&am=", "")}&am=${amount.toString()}`;
 }
