@@ -1,32 +1,25 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Flex, View, Text } from "native-base";
+import { Flex, View, Text, ScrollView, FlatList } from "native-base";
 import React, { useEffect, useState } from "react";
 import { TransactionCard } from "../components";
 
 export function AccountScreen() {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState<any>([]);
 
   useEffect(() => {
     AsyncStorage.getItem("transactions").then((res) => {
-      setTransactions(JSON.parse(res || "{}"));
+      const arr = JSON.parse(res || "[{}]") as any[];
+      arr.reverse();
+      setTransactions(arr);
     });
   }, []);
 
   return (
     <Flex flex={1}>
-      <Text
-        fontSize="2xl"
-        textAlign="center"
-        mt={8}
-        mb={4}
-        fontWeight="semibold"
-      >
-        Your transactions
-      </Text>
       <View
         display="flex"
         flexDir="row"
-        mb={8}
+        my={8}
         justifyContent={"center"}
         alignItems="flex-end"
       >
@@ -44,11 +37,24 @@ export function AccountScreen() {
           ₹2,000/5,000
         </Text>
       </View>
+      <Text fontSize="lg" mt={0} mx={4} mb={2} fontWeight="semibold">
+        Your Transactions
+      </Text>
 
-      <Flex flex={1} mx={4} alignItems="center">
-        {transactions?.map((e: any) => {
-          return <TransactionCard {...e} />;
-        })}
+      <Flex flex={1} alignItems="center">
+        {/* <ScrollView bg="red.200" display="flex" alignItems="center">
+          {transactions?.map((e: any) => {
+            return <TransactionCard {...e} />;
+          })}
+        </ScrollView> */}
+        <FlatList
+          mx={4}
+          contentContainerStyle={{
+            alignItems: "center",
+          }}
+          data={transactions}
+          renderItem={({ item }: any) => <TransactionCard {...item} />}
+        />
       </Flex>
     </Flex>
   );

@@ -14,7 +14,7 @@ export function TransactionCard({ amount, receiver }: TransactionCardProps) {
     <Flex
       borderWidth={1}
       borderColor="blueGray.300"
-      w="full"
+      w={300}
       mx={4}
       justifyContent="center"
       h={100}
@@ -39,7 +39,7 @@ export function TransactionCard({ amount, receiver }: TransactionCardProps) {
           </Text>
         </Flex>
         <Flex mr={4}>
-          <Text fontSize="2xl" color="danger.600">
+          <Text fontWeight="semibold" fontSize="lg" color="danger.600">
             ₹{amount}
           </Text>
         </Flex>
