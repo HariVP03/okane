@@ -37,6 +37,7 @@ export function ScanScreen() {
       </View>
     );
   }
+
   if (hasPermission === false) {
     return (
       <View

@@ -1,13 +1,13 @@
-import { View, Text, Input, NumberInput, Button } from "native-base";
-import React, { useEffect, useRef, useState } from "react";
+import { View, Text, Input, Button } from "native-base";
+import React, { useState } from "react";
 import { Linking } from "react-native";
-import { addAmountToUPI } from "../helpers";
+import { parseUpiString } from "../helpers/upi-string";
 
 export function AmountScreen({ route: { params } }: any) {
   const [amount, setAmount] = useState("");
 
   const onSubmit = () => {
-    const upi = addAmountToUPI(params.data, parseInt(amount));
+    const upi = parseUpiString(params.data, parseInt(amount));
     Linking.openURL(upi);
   };
 
